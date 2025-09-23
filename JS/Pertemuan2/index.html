@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pegawai</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        thead th, tfoot td {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        tbody td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        tfoot td {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Data Pegawai</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Informasi Pegawai</th>
+                </tr>
+            </thead>
+            <tbody id="pegawai-info">
+                </tbody>
+        </table>
+        
+        <h2>Rincian Gaji</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Komponen Gaji</th>
+                    <th>Jumlah</th>
+                </tr>
+            </thead>
+            <tbody id="gaji-rincian">
+                </tbody>
+            <tfoot id="gaji-total">
+                </tfoot>
+        </table>
+    </div>
+
+    <script>
+        // Data Pegawai
+        const pegawai = {
+            nama: "dodi prayodi",
+            umur: 25,
+            jabatan: "manajer",
+            status: "menikah"
+        };
+
+        // Fungsi untuk menghitung gaji
+        function hitungGaji(pegawai) {
+            let gajiPokok = 0;
+            switch (pegawai.jabatan.toLowerCase()) {
+                case "manajer":
+                    gajiPokok = 15000000;
+                    break;
+                case "asisten manajer":
+                    gajiPokok = 10000000;
+                    break;
+                case "staff":
+                    gajiPokok = 5000000;
+                    break;
+                default:
+                    gajiPokok = 0;
+            }
+
+            const tunjanganJabatan = 0.15 * gajiPokok;
+            const bpjs = 0.10 * gajiPokok;
+            const tunjanganKeluarga = pegawai.status.toLowerCase() === "menikah" ? 0.20 * gajiPokok : 0;
+            const totalGaji = gajiPokok + tunjanganJabatan + bpjs + tunjanganKeluarga;
+
+            return {
+                gajiPokok,
+                tunjanganJabatan,
+                bpjs,
+                tunjanganKeluarga,
+                totalGaji
+            };
+        }
+
+        const rincianGaji = hitungGaji(pegawai);
+        const formatRupiah = (angka) => {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angka);
+        };
+
+        // Mengisi tabel informasi pegawai
+        document.getElementById('pegawai-info').innerHTML = `
+            <tr>
+                <td>Nama Pegawai</td>
+                <td>${pegawai.nama.toUpperCase()}</td>
+            </tr>
+            <tr>
+                <td>Umur</td>
+                <td>${pegawai.umur} tahun</td>
+            </tr>
+            <tr>
+                <td>Jabatan</td>
+                <td>${pegawai.jabatan.charAt(0).toUpperCase() + pegawai.jabatan.slice(1)}</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>${pegawai.status.charAt(0).toUpperCase() + pegawai.status.slice(1)}</td>
+            </tr>
+        `;
+
+        // Mengisi tabel rincian gaji
+        document.getElementById('gaji-rincian').innerHTML = `
+            <tr>
+                <td>Gaji Pokok</td>
+                <td>${formatRupiah(rincianGaji.gajiPokok)}</td>
+            </tr>
+            <tr>
+                <td>Tunjangan Jabatan (15%)</td>
+                <td>${formatRupiah(rincianGaji.tunjanganJabatan)}</td>
+            </tr>
+            <tr>
+                <td>BPJS (10%)</td>
+                <td>${formatRupiah(rincianGaji.bpjs)}</td>
+            </tr>
+            <tr>
+                <td>Tunjangan Keluarga (20%)</td>
+                <td>${formatRupiah(rincianGaji.tunjanganKeluarga)}</td>
+            </tr>
+        `;
+
+        // Mengisi tabel total gaji di bagian tfoot
+        document.getElementById('gaji-total').innerHTML = `
+            <tr>
+                <td>Total Gaji</td>
+                <td>${formatRupiah(rincianGaji.totalGaji)}</td>
+            </tr>
+        `;
+    </script>
+
+</body>
+</html>
