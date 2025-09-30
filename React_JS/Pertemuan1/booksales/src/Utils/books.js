@@ -9,11 +9,11 @@ const books = [
   },
   {
     id: 2,
-    title: "The Psychology of Money",
-    author: "Morgan Housel",
-    year: 2020,
-    description: "Pelajaran penting tentang keuangan dan perilaku manusia.",
-    image: "https://uniathenaprods3.uniathena.com/s3fs-public/2024-03/ThePsychologyofMoney_0.jpg"
+    title: "Homo Deus: Masa Depan Umat Manusia",
+    author: "Yuval Noah Harari",
+    year: 2015,
+    description: "Buku Homo Deus merupakan bacaan penting bagi yang memikirkan masa depan.",
+    image: "https://store.ums.ac.id/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/h/o/homo_deus_1.jpg"
   },
   {
     id: 3,
