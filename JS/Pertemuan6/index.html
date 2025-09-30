@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Manajemen Data (ES6 Modules)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 { color: #007bff; text-align: center; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        
+        /* Gaya untuk Daftar Pengguna */
+        #daftarPengguna ul {
+            list-style: none;
+            padding: 0;
+        }
+        #daftarPengguna li {
+            background-color: #e9f5ff;
+            margin-bottom: 8px;
+            padding: 10px;
+            border-left: 5px solid #007bff;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+        
+        /* Gaya untuk Log Operasi */
+        #log {
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-height: 200px;
+            overflow-y: scroll;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+        #log p { margin: 5px 0; padding: 2px 0; }
+        .heading { color: #ffeb3b; font-weight: bold; border-bottom: 1px dashed #555; padding-bottom: 5px !important; }
+        .success { color: #4caf50; }
+        .error { color: #f44336; font-weight: bold; }
+        .info { color: #bdbdbd; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Manajemen Data Pengguna (ES6 Modules)</h1>
+
+        <h2>Daftar Pengguna Aktif</h2>
+        <div id="daftarPengguna">
+            <p>Memuat data...</p>
+            </div>
+
+        <h2>Log Operasi Controller</h2>
+        <div id="log">
+            </div>
+    </div>
+
+    <script type="module" src="main.js"></script> 
+</body>
+</html>
