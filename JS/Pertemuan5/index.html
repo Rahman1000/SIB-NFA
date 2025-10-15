@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Produk Toko Online (OOP JS)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+        /* Styling Form */
+        form label { display: block; margin-top: 10px; font-weight: bold; }
+        form input[type="text"], form input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        button:hover { background-color: #0056b3; }
+        .btn-hapus {
+            background-color: #dc3545;
+            padding: 5px 10px;
+            margin-top: 0;
+        }
+        .btn-hapus:hover { background-color: #c82333; }
+        
+        /* Styling Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Styling Log */
+        #outputLog {
+            max-height: 200px;
+            overflow-y: scroll;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            font-size: 0.9em;
+            border-radius: 4px;
+        }
+        #outputLog p { margin: 2px 0; }
+        .heading { color: #ffc107; font-weight: bold; margin-top: 5px !important; }
+        .success { color: #28a745; }
+        .error { color: #dc3545; font-weight: bold; }
+        .info { color: #17a2b8; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sistem Manajemen Produk 📦</h1>
+
+        <div class="section">
+            <h2>➕ Tambah Produk Baru (Spread & Rest Parameter)</h2>
+            <form id="formTambah">
+                <label for="idProduk">ID Produk (Unique):</label>
+                <input type="number" id="idProduk" name="idProduk" required>
+                
+                <label for="namaProduk">Nama Produk:</label>
+                <input type="text" id="namaProduk" name="namaProduk" required>
+                
+                <label for="hargaProduk">Harga (Rp):</label>
+                <input type="number" id="hargaProduk" name="hargaProduk" min="1" required>
+                
+                <button type="submit">Tambah Produk</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <h2>📋 Daftar Produk (Destructuring)</h2>
+            <div id="daftarProduk">
+                </div>
+        </div>
+        
+        <div class="section">
+            <h2>📜 Log Transaksi & Aksi</h2>
+            <div id="outputLog">
+                </div>
+        </div>
+
+    </div>
+
+    <script src="manajemen_produk.js"></script> 
+</body>
+</html>
