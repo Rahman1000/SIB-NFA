@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataController; // Import Controller
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ Route::get('/', function () {
         <ul>
             <li><a href='/genres'>Lihat Data Genre</a></li>
             <li><a href='/authors'>Lihat Data Author</a></li>
+            <li><a href='/books'>Lihat Data Buku</a></li>
         </ul>
     ";
 });
@@ -30,3 +32,7 @@ Route::get('/genres', [DataController::class, 'showGenres']);
 // Rute untuk menampilkan data Author
 // Memanggil method showAuthors dari DataController
 Route::get('/authors', [DataController::class, 'showAuthors']);
+
+
+// Rute untuk menampilkan data buku
+Route::get('/books', [BookController::class, 'index'])->name('books.index');
