@@ -9,6 +9,8 @@ class Genre extends Model
 {
     use HasFactory;
 
+    protected $table = 'genres';
+
     // Data statis Genre
     public static function allGenres()
     {

@@ -34,5 +34,5 @@ Route::get('/genres', [DataController::class, 'showGenres']);
 Route::get('/authors', [DataController::class, 'showAuthors']);
 
 
-// Rute untuk menampilkan data buku
-Route::get('/books', [BookController::class, 'index'])->name('books.index');
+// // Rute untuk menampilkan data buku
+// Route::get('/books', [BookController::class, 'index'])->name('books.index');
