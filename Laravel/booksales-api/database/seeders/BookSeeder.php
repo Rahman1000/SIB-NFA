@@ -12,10 +12,35 @@ class BookSeeder extends Seeder
 {
     public function run(): void
     {
-        // Membuat 15 data Buku, pastikan Author sudah ada
-        Book::factory()->count(15)->create();
+        Book::create([
+            'title' => 'The Great Adventure',
+            'description' => 'An epic journey through uncharted lands.',
+            'price' => 19900,
+            'stock' => 50,
+            'cover_photo' => 'great_adventure.jpg',
+            'genre_id' => 1,
+            'author_id' => 1,
+        ]);
 
-        // Tambahkan 5 data buku spesifik (atau lebih, karena sudah 15 dari factory)
-        // Kita hanya perlu memastikan total 5 data BUKAN hanya 5 data total.
+        Book::create([
+            'title' => 'Mystery of the Old Mansion',
+            'description' => 'A thrilling mystery set in a haunted mansion.',
+            'price' => 15900,
+            'stock' => 30,
+            'cover_photo' => 'old_mansion.jpg',
+            'genre_id' => 2,
+            'author_id' => 2,
+        ]);
+
+        Book::create([
+            'title' => 'Science Facts for Kids',
+            'description' => 'A fun and educational book about science for children.',
+            'price' => 9900,
+            'stock' => 100,
+            'cover_photo' => 'science_facts.jpg',
+            'genre_id' => 3,
+            'author_id' => 3,
+        ]);
+
     }
 }

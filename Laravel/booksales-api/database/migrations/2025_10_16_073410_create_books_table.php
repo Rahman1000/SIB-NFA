@@ -12,12 +12,13 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 200);
-            $table->foreignId('author_id') // Foreign Key untuk Author
-                  ->constrained() // Merujuk ke tabel 'authors'
-                  ->onDelete('cascade');
-            $table->decimal('price', 8, 2);
+            $table->string('title');
+            $table->text('description');
+            $table->integer('price');
             $table->integer('stock');
+            $table->string('cover_photo');
+            $table->unsignedBigInteger('genre_id');
+            $table->unsignedBigInteger('author_id');
             $table->timestamps();
         });
     }

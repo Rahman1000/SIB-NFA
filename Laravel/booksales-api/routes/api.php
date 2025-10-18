@@ -9,25 +9,15 @@ use App\Http\Controllers\BookController; // Import Controller
 use App\Http\Controllers\GenreController;
 use Illuminate\Container\Attributes\Auth;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Di sini Anda dapat mendaftarkan rute API untuk aplikasi Anda.
-|
-*/
 
-// Route dasar untuk mengambil semua buku
-// Endpoint yang diakses adalah: /api/books
 Route::get('/books', [BookController::class, 'index']);
 
-// Tambahkan route untuk mengambil satu buku (opsional, tetapi standar API)
-Route::get('/books/{id}', [BookController::class, 'show']);
-
-// Contoh route POST untuk membuat buku baru
 Route::post('/books', [BookController::class, 'store']);
 
 Route::get('/genres', [GenreController::class, 'index']);
 
+Route::post('/genres', [GenreController::class, 'store']);
+
 Route::get('/authors', [AuthorController::class, 'index']);
+
+Route::post('/authors', [AuthorController::class, 'store']);

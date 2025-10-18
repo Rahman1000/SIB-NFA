@@ -11,11 +11,15 @@ class Book extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'author_id', 'price', 'stock'];
+    protected $table = 'books';
 
-    // Definisikan relasi: Satu buku dimiliki oleh satu author
-    public function author()
-    {
-        return $this->belongsTo(Author::class);
-    }
+    protected $fillable = [
+        'title',
+        'description',
+        'price',
+        'stock',
+        'cover_photo',
+        'genre_id',
+        'author_id',
+    ];
 }
