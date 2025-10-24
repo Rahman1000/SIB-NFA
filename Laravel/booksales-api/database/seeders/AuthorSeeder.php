@@ -24,5 +24,11 @@ class AuthorSeeder extends Seeder
             'photo' => 'Agatha_Christie.jpg',
             'bio' => 'Lahir pada tahun 1890. Penulis novel misteri Inggris yang terkenal dengan karakter Hercule Poirot dan Miss Marple.'
         ]);
+
+        Author::create([
+            'name' => 'Tere Liye',
+            'photo' => 'Tere_Liye.jpg',
+            'bio' => 'Tere Liye adalah nama pena (nama samaran) dari Darwis, seorang penulis novel best seller berkebangsaan Indonesia. Ia dikenal sebagai salah satu penulis paling produktif dengan karya yang sangat digemari lintas generasi karena tema-tema yang sederhana, namun mengandung pesan moral, filosofi, dan emosi yang mendalam.'
+        ]);
     }
 }
