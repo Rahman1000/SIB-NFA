@@ -1,15 +1,34 @@
-import { use, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createAuthor } from "../../../_services/authors"
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { showAuthor } from "../../../_services/authors"
 
-export default function AuthorCreate() {
+export default function AuthorEdit() {
+  const { id } = useParams()
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name:"",
     photo: null,
     bio: "",
-  })
+    _method: "PUT",
+  });
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchData = async () => {
+      const [] = await Promise.all([
+        showAuthor(id)
+      ]);
+      setFormData({
+        name: authorData.name,
+        photo: authorData.photo,
+        bio: authorData.bio,
+        _method: "PUT",
+      })
+    };
+
+    fetchData();
+  }, [id]);
+
+  console.log(formData)
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -32,15 +51,22 @@ export default function AuthorCreate() {
 
     try {
       const payload = new FormData();
+
       for (const key in formData) {
-        payload.append(key, formData[key]);
+        if (key === "photo") {
+          if (formData.photo instanceof File) {
+            payload.append("photo", formData.photo);
+            } 
+          } else {
+            payload.append(key, formData[key]);
+          }
       }
 
-      await createAuthor(payload);
+      await updateAuthor(id, payload);
       navigate("/admin/authors");
     } catch (error) {
       console.log(error);
-      alert("Error creating author");
+      alert("Error update author");
     }
   }
 
@@ -84,7 +110,6 @@ export default function AuthorCreate() {
                   id="photo"
                   accept="image/*"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full cursor-pointer dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                  required
                 />
               </div>
               <div className="sm:col-span-2">
@@ -113,12 +138,6 @@ export default function AuthorCreate() {
                 className="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
               >
                 Save Data
-              </button>
-              <button
-                type="reset"
-                className="text-gray-600 inline-flex items-center hover:text-white border border-gray-600 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-gray-500 dark:text-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-900"
-              >
-                Reset
               </button>
             </div>
           </form>

@@ -10,19 +10,6 @@ export default function GenreCreate() {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const [genresData, authorsData] = await Promise.all([
-  //       getGenres(),
-  //       getAuthors(),
-  //     ]);
-  //     setGenres(genresData);
-  //     setAuthors(authorsData);
-  //   };
-
-  //   fetchData();
-  // }, []);
-
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
@@ -108,7 +95,7 @@ export default function GenreCreate() {
                 type="submit"
                 className="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
               >
-                Create Genre
+                Save Data
               </button>
               <button
                 type="reset"
