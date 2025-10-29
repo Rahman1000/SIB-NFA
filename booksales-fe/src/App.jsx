@@ -12,6 +12,10 @@ import AdminGenres from './pages/admin/genres'
 import GenreCreate from './pages/admin/genres/create'
 import AdminAuthors from './pages/admin/authors'
 import AuthorCreate from './pages/admin/authors/create'
+import ShowBook from './pages/public/books/show'
+import BookEdit from './pages/admin/books/edit'
+import AuthorEdit from './pages/admin/authors/edit'
+import GenreEdit from './pages/admin/genres/edit'
 
 function App() {
 
@@ -22,8 +26,11 @@ function App() {
           {/* Public  */}
           <Route element={<PublicLayout />} />
             <Route index element={<Home />} />
-            <Route path="books" element={<Books />} />
 
+            <Route path="books">
+              <Route index element={<Books />} />
+              <Route path="show/:id" element={<ShowBook />} />
+            </Route>
           {/* Auth */}
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

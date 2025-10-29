@@ -1,4 +1,4 @@
-import API from '../_api';
+import {API} from '../_api/index.js';
 
 export const getAuthors = async () => {
     const { data } = await API.get('/authors')

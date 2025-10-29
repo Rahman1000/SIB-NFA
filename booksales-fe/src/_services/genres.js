@@ -1,4 +1,4 @@
-import API from '../_api';
+import { API } from '../_api/index.js';
 
 export const getGenres = async () => {
     const { data } = await API.get('/genres')
@@ -15,7 +15,7 @@ export const createGenre = async (data) => {
     }
 }
 
-export const showAuthor = async (id) => {
+export const showGenre = async (id) => {
     try {
         const { data } = await API.get(`/authors/${id}`)
         return data.data
@@ -25,7 +25,7 @@ export const showAuthor = async (id) => {
     } 
 }
 
-export const updateAuthor = async (id, data) => {
+export const updateGenre = async (id, data) => {
     try {
         const response = await API.post(`/authors/${id}`, data)
     } catch (error) {
@@ -34,7 +34,7 @@ export const updateAuthor = async (id, data) => {
     } 
 }
 
-export const deleteAuthor = async (id) => {
+export const deleteGenre = async (id) => {
     try {
         await API.delete(`/authors/${id}`)
     } catch (error) {
